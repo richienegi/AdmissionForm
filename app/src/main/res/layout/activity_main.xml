@@ -34,6 +34,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/mfirst"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -46,6 +47,7 @@
                 android:textColorHint="@color/colorAccent" />
 
             <EditText
+                android:id="@+id/mmid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -58,6 +60,7 @@
                 android:textColorHint="@color/colorAccent" />
 
             <EditText
+                android:id="@+id/mlast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -92,6 +95,7 @@
                     android:textSize="30dp" />
 
                 <RadioGroup
+                    android:id="@+id/mgender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -135,7 +139,7 @@
                     android:textSize="30dp" />
 
                 <EditText
-                    android:id="@+id/dateOfBirth"
+                    android:id="@+id/dob"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
@@ -167,6 +171,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/mFfirst"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -179,6 +184,7 @@
                 android:textColorHint="@color/colorAccent" />
 
             <EditText
+                android:id="@+id/mFmid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -191,6 +197,7 @@
                 android:textColorHint="@color/colorAccent" />
 
             <EditText
+                android:id="@+id/mFlast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -219,6 +226,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/mMfirst"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -231,6 +239,7 @@
                 android:textColorHint="@color/colorAccent" />
 
             <EditText
+                android:id="@+id/mMmid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -243,6 +252,7 @@
                 android:textColorHint="@color/colorAccent" />
 
             <EditText
+                android:id="@+id/mMlast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -257,6 +267,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/mnext"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
