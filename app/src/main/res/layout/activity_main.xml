@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="4"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -23,7 +23,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Tell Us Something About You."
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,16 +99,16 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20dp"
                         android:layout_margin="10dp"
-                        android:text="Male" />
+                        android:text="Male"
+                        android:textSize="20dp" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:textSize="20dp"
-                        android:text="Female" />
+                        android:text="Female"
+                        android:textSize="20dp" />
 
                 </RadioGroup>
 
@@ -144,8 +145,8 @@
                     android:ems="10"
                     android:focusable="false"
                     android:hint="DD/MMM/YYYY"
-                    android:textColorHint="@color/colorAccent"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textColorHint="@color/colorAccent" />
 
             </LinearLayout>
 
@@ -155,7 +156,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Father's Name"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -206,7 +208,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mother's Name"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -267,6 +270,6 @@
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:scaleType="fitXY"
-        android:src="@drawable/footer" />
+        android:src="@drawable/p1" />
 
 </LinearLayout>
