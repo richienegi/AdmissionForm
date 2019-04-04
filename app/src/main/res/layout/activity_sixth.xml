@@ -18,8 +18,92 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="How did you Find Us?"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="50dp"
+            android:weightSum="8">
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="2"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:layout_margin="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Facebook"
+                    android:textSize="30dp" />
+
+                <RadioButton
+                    android:layout_margin="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Google"
+                    android:textSize="30dp" />
+
+            </TableLayout>
+
+            <TableLayout
+                android:layout_weight="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:layout_margin="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reference"
+                    android:textSize="30dp" />
+
+                <RadioButton
+                    android:layout_margin="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Other"
+                    android:textSize="30dp" />
+            </TableLayout>
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/edittext_background"
+                android:text="Back"
+                android:textColor="#000" />
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background"
+                android:text="Next"
+                android:textColor="#fff" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"

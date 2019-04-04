@@ -15,15 +15,127 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="4"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Which Degree Holder are You?"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TableLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow android:layout_margin="10dp"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:layout_marginRight="80dp"
+                    android:text="* Qualification"
+                    android:textSize="30dp"
+                    android:layout_column="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_column="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_background"
+                    android:ems="15"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="@color/colorAccent"/>
+
+            </TableRow>
+
+            <TableRow android:layout_margin="10dp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginRight="80dp"
+                    android:text="University / School"
+                    android:textSize="30dp" />
+
+                <EditText
+                    android:layout_column="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_background"
+                    android:ems="15"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="@color/colorAccent"/>
+
+            </TableRow>
+
+            <TableRow android:layout_margin="10dp"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:layout_marginRight="80dp"
+                    android:text="Passing Year"
+                    android:textSize="30dp"
+                    android:layout_column="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_column="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_background"
+                    android:ems="15"
+                    android:padding="10dp"
+                    android:clickable="false"
+                    android:drawableEnd="@drawable/datepicker"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:inputType="text" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/edittext_background"
+                android:text="Back"
+                android:textColor="#000" />
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background"
+                android:text="Next"
+                android:textColor="#fff" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
         android:scaleType="fitXY"
         android:src="@drawable/p4" />
 
