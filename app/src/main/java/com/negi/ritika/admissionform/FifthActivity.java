@@ -53,7 +53,14 @@ public class FifthActivity extends AppCompatActivity {
                 DataClass.website = "";
                 DataClass.college_name = "";
                 DataClass.college_address = "";
-
+                int select = rg.getCheckedRadioButtonId();
+                RadioButton rb;
+                if (select > -1) {
+                    rb = findViewById(select);
+                    DataClass.passout_or_student = rb.getText().toString();
+                } else {
+                    DataClass.passout_or_student = "";
+                }
                 Intent i = new Intent(FifthActivity.this, SixthActivity.class);
                 startActivity(i);
             }
