@@ -42,6 +42,7 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    android:id="@+id/quali"
                     android:layout_column="2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,6 +67,7 @@
                     android:textSize="30dp" />
 
                 <EditText
+                    android:id="@+id/school"
                     android:layout_column="2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -89,11 +91,14 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    android:id="@+id/pass_year"
                     android:layout_column="2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edittext_background"
                     android:ems="15"
+                    android:hint="DD/MM/YYYY"
+                    android:textColorHint="@color/colorAccent"
                     android:padding="10dp"
                     android:clickable="false"
                     android:drawableEnd="@drawable/datepicker"

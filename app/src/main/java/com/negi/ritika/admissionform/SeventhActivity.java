@@ -12,8 +12,10 @@ Button mnext,mback;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seventh);
+
         mnext=(Button)findViewById(R.id.next);
         mback=(Button)findViewById(R.id.back);
+
         mnext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

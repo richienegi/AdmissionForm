@@ -26,21 +26,20 @@
             android:textSize="30dp"
             android:textStyle="bold" />
 
-        <RadioGroup
+        <com.negi.ritika.admissionform.Model_Class.ToggleButtonGroupTableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="40dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingLeft="50dp"
-            android:weightSum="8">
+            android:weightSum="8"
+            android:id="@+id/r_group">
 
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_weight="2"
-                android:layout_height="wrap_content">
+            <TableRow
+                android:gravity="center">
 
                 <RadioButton
+                    android:id="@+id/rb_facebook"
                     android:layout_margin="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -48,20 +47,20 @@
                     android:textSize="30dp" />
 
                 <RadioButton
+                    android:id="@+id/rb_google"
                     android:layout_margin="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Google"
                     android:textSize="30dp" />
 
-            </TableLayout>
+            </TableRow>
 
-            <TableLayout
-                android:layout_weight="2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <TableRow
+                android:gravity="center">
 
                 <RadioButton
+                    android:id="@+id/rb_ref"
                     android:layout_margin="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -69,13 +68,14 @@
                     android:textSize="30dp" />
 
                 <RadioButton
+                    android:id="@+id/rb_other"
                     android:layout_margin="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Other"
                     android:textSize="30dp" />
-            </TableLayout>
-        </RadioGroup>
+            </TableRow>
+        </com.negi.ritika.admissionform.Model_Class.ToggleButtonGroupTableLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

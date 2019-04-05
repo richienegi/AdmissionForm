@@ -7,6 +7,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +16,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.negi.ritika.admissionform.Model_Class.DataClass;
+import com.negi.ritika.admissionform.Model_Class.ToggleButtonGroupTableLayout;
+
 import java.io.ByteArrayOutputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SecondActivity extends AppCompatActivity {
+
     CircleImageView mimage;
     Button mbrowse,mnext,mback;
     Bitmap bmp;
@@ -36,7 +41,6 @@ public class SecondActivity extends AppCompatActivity {
         mnext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*
                 if (getStringImage(bmp)==null) {
 
                     LayoutInflater li = getLayoutInflater();
@@ -50,17 +54,18 @@ public class SecondActivity extends AppCompatActivity {
                     toast.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT, 0, 0);
                     toast.setView(layout);//setting the view of custom toast layout
                     toast.show();
-                } else {*/
+                } else {
+                    DataClass.user_image = bmp;
+                    Log.d(ToggleButtonGroupTableLayout.TAG, DataClass.user_image.toString());
                     Intent i=new Intent(SecondActivity.this,ThirdActivity.class);
                     startActivity(i);
 
-//                }
+                }
             }
         });
         mbrowse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent,CAPTURE_PICCODE );
 
@@ -71,7 +76,6 @@ public class SecondActivity extends AppCompatActivity {
         mback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(SecondActivity.this,MainActivity.class));
                 finish();
             }
         });
