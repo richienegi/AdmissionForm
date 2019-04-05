@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                 DatePickerDialog mDatePicker = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
-                        dobirth.setText(selectedday + "-" + (selectedmonth + 1) + "-" + selectedyear);
+                        dobirth.setText(selectedday + "-" + DataClass.month[selectedmonth] + "-" + selectedyear);
                     }
                 }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select date");
@@ -115,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                int id = gender.getCheckedRadioButtonId();
+                RadioButton rb = findViewById(id);
+
                 DataClass.user_f_name = fname;
                 DataClass.user_m_name = mid.getText().toString();
                 DataClass.user_l_name = last.getText().toString();
@@ -130,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 DataClass.mother_l_name = Mlast.getText().toString();
 
                 DataClass.user_dob = dob;
+                DataClass.user_gender = rb.getText().toString();
 
                 Log.d(ToggleButtonGroupTableLayout.TAG,
                         DataClass.user_f_name+"\n"+

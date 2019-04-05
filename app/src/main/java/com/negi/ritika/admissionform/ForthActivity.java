@@ -37,7 +37,7 @@ public class ForthActivity extends AppCompatActivity {
 
         DatePickerDialog mDatePicker = new DatePickerDialog(ForthActivity.this, new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
-                passing_year.setText(selectedday + "-" + (selectedmonth + 1) + "-" + selectedyear);
+                passing_year.setText(selectedday + "-" + DataClass.month[selectedmonth] + "-" + selectedyear);
             }
         }, mYear, mMonth, mDay);
         mDatePicker.setTitle("Select date");
