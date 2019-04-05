@@ -26,13 +26,15 @@
             android:textStyle="bold"
             android:textSize="30dp" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleimage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:src="@drawable/person" />
 
         <Button
+            android:id="@+id/browse"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
@@ -49,6 +51,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/back"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -57,6 +60,7 @@
                 android:textColor="#000" />
 
             <Button
+                android:id="@+id/next"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

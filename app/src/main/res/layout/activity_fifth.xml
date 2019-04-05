@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TableRow android:layout_margin="20dp"
+            <TableRow android:layout_margin="10dp"
                 android:gravity="center_horizontal">
                 <TextView
                     android:layout_marginRight="80dp"
@@ -54,7 +54,7 @@
 
             </TableRow>
 
-            <TableRow android:layout_margin="20dp"
+            <TableRow android:layout_margin="10dp"
                 android:gravity="center_horizontal">
                 <TextView
                     android:layout_marginRight="80dp"
@@ -77,7 +77,7 @@
 
             </TableRow>
 
-            <TableRow android:layout_margin="20dp"
+            <TableRow android:layout_margin="10dp"
                 android:gravity="center_horizontal">
                 <TextView
                     android:layout_marginRight="80dp"
@@ -134,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TableRow android:layout_margin="20dp"
+            <TableRow android:layout_margin="10dp"
                 android:gravity="center_horizontal">
                 <TextView
                     android:layout_marginRight="80dp"
@@ -157,7 +157,7 @@
 
             </TableRow>
 
-            <TableRow android:layout_margin="20dp"
+            <TableRow android:layout_margin="10dp"
                 android:gravity="center_horizontal">
                 <TextView
                     android:layout_marginRight="80dp"
@@ -191,6 +191,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/back"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -199,6 +200,7 @@
                 android:textColor="#000" />
 
             <Button
+                android:id="@+id/next"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -207,6 +209,7 @@
                 android:textColor="#fff" />
 
             <Button
+                android:id="@+id/skip"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

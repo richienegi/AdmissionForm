@@ -1,6 +1,7 @@
 package com.negi.ritika.admissionform;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -32,16 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
-
-
         dobirth=(EditText)findViewById(R.id.dob);
-
-
-
-
         first=(EditText)findViewById(R.id.mfirst);
         mid=(EditText)findViewById(R.id.mmid);
         last=(EditText)findViewById(R.id.mlast);
@@ -79,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //person name
+/*                //person name
                 fname=first.getText().toString();
                 mname=mid.getText().toString();
                 lname=last.getText().toString();
@@ -133,9 +125,11 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please selecte gender", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                else {
+                else {*/
+                    Intent i=new Intent(MainActivity.this,SecondActivity.class);
+                    startActivity(i);
 
-                }
+//                }
             }
         });
 
