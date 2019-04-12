@@ -8,6 +8,7 @@ public class DataClass {
     public static String month[] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 
     public static ArrayList<String> courses = new ArrayList<>();
+    public static ArrayList<Bitmap> docs = new ArrayList<>();
 
     public static Bitmap user_image;
 

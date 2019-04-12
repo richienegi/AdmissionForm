@@ -1,13 +1,217 @@
 package com.negi.ritika.admissionform;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.negi.ritika.admissionform.Model_Class.DataClass;
+
+import net.gotev.uploadservice.MultipartUploadRequest;
+import net.gotev.uploadservice.ServerResponse;
+import net.gotev.uploadservice.UploadInfo;
+import net.gotev.uploadservice.UploadNotificationConfig;
+import net.gotev.uploadservice.UploadStatusDelegate;
+
+import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.UUID;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NinthActivity extends AppCompatActivity {
+
+    private String UPLOAD_URL = "http://fossfoundation.com/AdmissionForm/registration1.php";
+    private String strDate = "";
+
+    ArrayList<String> images;
+
+    @BindView(R.id.back)
+    Button back;
+    @BindView(R.id.submit)
+    Button submit;
+
+    @BindView(R.id.course_list)
+    ListView courses;
+    @BindView(R.id.profileimage)
+    CircleImageView profile_image;
+
+    @BindView(R.id.qualification)
+    TextView qualification;
+    @BindView(R.id.email)
+    TextView email;
+    @BindView(R.id.whatsapp_num)
+    TextView whatsapp_num;
+    @BindView(R.id.mobile_no)
+    TextView mobile_no;
+    @BindView(R.id.mother_name)
+    TextView mother_name;
+    @BindView(R.id.father_name)
+    TextView father_name;
+    @BindView(R.id.dob)
+    TextView dob;
+    @BindView(R.id.gender)
+    TextView gender;
+    @BindView(R.id.name)
+    TextView name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ninth);
+
+        ButterKnife.bind(this);
+
+        images = new ArrayList<>();
+        images.add("");
+        images.add("");
+        images.add("");
+        images.add("");
+        images.add("");
+        images.add("");
+        images.add("");
+        images.add("");
+        images.add("");
+        images.add("");
+
+        name.setText(DataClass.user_f_name + " " + DataClass.user_m_name + " " + DataClass.user_l_name);
+        gender.setText(DataClass.user_gender);
+        dob.setText(DataClass.user_dob);
+        father_name.setText(DataClass.father_f_name + " " + DataClass.father_m_name + " " + DataClass.father_l_name);
+        mother_name.setText(DataClass.mother_f_name + " " + DataClass.mother_m_name + " " + DataClass.mother_l_name);
+        mobile_no.setText(DataClass.user_mobile);
+        whatsapp_num.setText(DataClass.user_whatsapp);
+        email.setText(DataClass.user_email);
+        qualification.setText(DataClass.user_qualification);
+        profile_image.setImageBitmap(DataClass.user_image);
+
+        ArrayAdapter ad = new ArrayAdapter(this, R.layout.list_layout_last, DataClass.courses);
+        courses.setAdapter(ad);
+
+        for (int i = 0; i < DataClass.docs.size(); i++) {
+            images.set(i, getStringImage(DataClass.docs.get(i)));
+        }
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submitForm();
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void submitForm() {
+
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setCancelable(false);
+        pd.show();
+
+        String uploadId = UUID.randomUUID().toString();
+
+        try {
+            getCurrentDate();
+            new MultipartUploadRequest(NinthActivity.this, uploadId, UPLOAD_URL)
+                    .addParameter("name", DataClass.user_f_name + " " + DataClass.user_m_name + " " + DataClass.user_l_name)
+                    .addParameter("gender", DataClass.user_gender)
+                    .addParameter("dob", DataClass.user_dob)
+                    .addParameter("fathername", DataClass.father_f_name + " " + DataClass.father_m_name + " " + DataClass.father_l_name)
+                    .addParameter("mothername", DataClass.mother_f_name + " " + DataClass.mother_m_name + " " + DataClass.mother_l_name)
+                    .addParameter("image", getStringImage(DataClass.user_image))
+                    .addParameter("mobileno", DataClass.user_mobile)
+                    .addParameter("whatsno", DataClass.user_whatsapp)
+                    .addParameter("alternatno", DataClass.user_alternate)
+                    .addParameter("email", DataClass.user_email)
+                    .addParameter("fatherno", DataClass.father_mobile)
+                    .addParameter("motherno", DataClass.mother_mobile)
+                    .addParameter("qualifi", DataClass.user_qualification)
+                    .addParameter("university", DataClass.user_school)
+                    .addParameter("passing", DataClass.user_passing)
+                    .addParameter("designation", DataClass.designation)
+                    .addParameter("company_name", DataClass.company_name)
+                    .addParameter("website", DataClass.website)
+                    .addParameter("college", DataClass.college_name)
+                    .addParameter("college_add", DataClass.college_address)
+                    .addParameter("findus", DataClass.source)
+                    .addParameter("course", DataClass.courses.toString())
+                    .addParameter("regisdate", strDate)
+                    .addParameter("image1", images.get(0))
+                    .addParameter("image2", images.get(1))
+                    .addParameter("image3", images.get(2))
+                    .addParameter("image4", images.get(3))
+                    .addParameter("image5", images.get(4))
+                    .addParameter("image6", images.get(5))
+                    .addParameter("image7", images.get(6))
+                    .addParameter("image8", images.get(7))
+                    .addParameter("image9", images.get(8))
+                    .addParameter("image10", images.get(9))
+                    .setNotificationConfig(new UploadNotificationConfig())
+                    .setMaxRetries(2)
+                    .setDelegate(new UploadStatusDelegate() {
+                        @Override
+                        public void onProgress(Context context, UploadInfo uploadInfo) {
+
+                        }
+
+                        @Override
+                        public void onError(Context context, UploadInfo uploadInfo, ServerResponse serverResponse, Exception exception) {
+                            Toast.makeText(context, exception.getMessage(), Toast.LENGTH_SHORT).show();
+                            pd.dismiss();
+                        }
+
+                        @Override
+                        public void onCompleted(Context context, UploadInfo uploadInfo, ServerResponse serverResponse) {
+                            Toast.makeText(context, "Uploaded\n"+serverResponse.getBodyAsString(), Toast.LENGTH_SHORT).show();
+                            pd.dismiss();
+//                            thanku(view);
+                        }
+
+                        @Override
+                        public void onCancelled(Context context, UploadInfo uploadInfo) {
+                            pd.dismiss();
+                        }
+                    }).startUpload();
+
+        } catch (Exception e) {
+            Toast.makeText(this, "" + e, Toast.LENGTH_SHORT).show();
+            pd.dismiss();
+        }
+
+    }
+
+    public void getCurrentDate() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat mdformat = new SimpleDateFormat("yyyy-MM-dd ");
+        strDate = mdformat.format(calendar.getTime());
+    }
+
+    public String getStringImage(Bitmap bmp) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] imageBytes = baos.toByteArray();
+            String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+            return encodedImage;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

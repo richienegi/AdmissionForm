@@ -28,7 +28,7 @@ public class ForthActivity extends AppCompatActivity {
     @BindView(R.id.pass_year) EditText passing_year;
 
     @OnClick(R.id.pass_year)
-    private void setPassingDate()
+    public void setPassingDate()
     {
         Calendar mcurrentDate = Calendar.getInstance();
         int mYear = mcurrentDate.get(Calendar.YEAR);
@@ -88,7 +88,9 @@ public class ForthActivity extends AppCompatActivity {
         mback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ForthActivity.this, ThirdActivity.class));
+                DataClass.user_qualification = "";
+                DataClass.user_school = "";
+                DataClass.user_passing = "";
                 finish();
             }
         });
