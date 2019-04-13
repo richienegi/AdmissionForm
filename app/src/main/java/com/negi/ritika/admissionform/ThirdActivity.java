@@ -48,6 +48,12 @@ public class ThirdActivity extends AppCompatActivity {
         mback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DataClass.user_mobile = "";
+                DataClass.user_whatsapp = "";
+                DataClass.user_alternate = "";
+                DataClass.user_email = "";
+                DataClass.father_mobile = "";
+                DataClass.mother_mobile = "";
                 finish();
             }
         });

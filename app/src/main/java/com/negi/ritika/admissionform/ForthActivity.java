@@ -88,6 +88,9 @@ public class ForthActivity extends AppCompatActivity {
         mback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DataClass.user_qualification = "";
+                DataClass.user_school = "";
+                DataClass.user_passing = "";
                 finish();
             }
         });

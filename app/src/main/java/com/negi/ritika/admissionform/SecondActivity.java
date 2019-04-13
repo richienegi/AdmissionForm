@@ -76,6 +76,7 @@ public class SecondActivity extends AppCompatActivity {
         mback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DataClass.user_image = null;
                 finish();
             }
         });

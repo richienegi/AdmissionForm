@@ -42,13 +42,13 @@ public class SixthActivity extends AppCompatActivity {
                     //Getting the View object as defined in the customtoast.xml file
                     View layout = li.inflate(R.layout.customtoast, (ViewGroup) findViewById(R.id.custom_toast_layout));
                     TextView tv = (TextView) layout.findViewById(R.id.custom_toast_message);
-                    tv.setText("Please Select your Gender");
+                    tv.setText("Please Select your Choice");
                     Toast toast = new Toast(SixthActivity.this);
                     toast.setDuration(Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                     toast.setView(layout);//setting the view of custom toast layout
                     toast.show();
-                    Toast.makeText(SixthActivity.this, "Please selecte gender", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(SixthActivity.this, "Please selecte gender", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 rb = findViewById(id);
@@ -62,7 +62,7 @@ public class SixthActivity extends AppCompatActivity {
         mback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // startActivity(new Intent(SixthActivity.this,FifthActivity.class));
+                DataClass.source = "";
                 finish();
             }
         });

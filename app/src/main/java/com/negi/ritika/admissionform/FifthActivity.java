@@ -92,6 +92,12 @@ public class FifthActivity extends AppCompatActivity {
         mback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DataClass.passout_or_student = "";
+                DataClass.company_name = "";
+                DataClass.designation = "";
+                DataClass.website = "";
+                DataClass.college_name = "";
+                DataClass.college_address = "";
                 finish();
             }
         });
