@@ -30,6 +30,6 @@ public class ThankYouActivity extends AppCompatActivity {
     }
 
     public void admin_panel(View view) {
-        
+
     }
 }
