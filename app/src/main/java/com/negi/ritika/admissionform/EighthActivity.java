@@ -2,6 +2,8 @@ package com.negi.ritika.admissionform;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +23,11 @@ import com.negi.ritika.admissionform.Adapter.my_adapter;
 import com.negi.ritika.admissionform.Model_Class.DataClass;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,8 +35,13 @@ import butterknife.ButterKnife;
 public class EighthActivity extends AppCompatActivity {
 
     Button mskip, mback, mscan;
-    @BindView(R.id.recyclerView) RecyclerView rv;
+    @BindView(R.id.recyclerView)
+    RecyclerView rv;
     private final int requestCode = 20;
+
+    Uri image;
+    String mCameraFileName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +53,7 @@ public class EighthActivity extends AppCompatActivity {
         mback = (Button) findViewById(R.id.back);
         mskip = (Button) findViewById(R.id.skip);
         mscan = (Button) findViewById(R.id.scan);
+
         LinearLayoutManager lm = new LinearLayoutManager(EighthActivity.this);
         lm.setOrientation(LinearLayoutManager.HORIZONTAL);
         rv.setLayoutManager(lm);
@@ -57,18 +69,30 @@ public class EighthActivity extends AppCompatActivity {
         mskip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(DataClass.docs.size()>0)
-                {
-                    startActivity(new Intent(EighthActivity.this, NinthActivity.class));
-                }
+                startActivity(new Intent(EighthActivity.this, FeesActivity.class));
             }
         });
 
         mscan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent photoCaptureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(photoCaptureIntent, requestCode);
+                StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                StrictMode.setVmPolicy(builder.build());
+                Intent intent = new Intent();
+                intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                Date date = new Date();
+                DateFormat df = new SimpleDateFormat("hh-mm-ss");
+
+                String newPicFile = df.format(date) + ".jpg";
+                String outPath = "/sdcard/" + newPicFile;
+                File outFile = new File(outPath);
+
+                mCameraFileName = outFile.toString();
+
+                Uri outuri = Uri.fromFile(outFile);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, outuri);
+                startActivityForResult(intent, requestCode);
             }
         });
     }
@@ -79,19 +103,30 @@ public class EighthActivity extends AppCompatActivity {
         try {
             if (this.requestCode == requestCode && resultCode == RESULT_OK) {
                 mskip.setText("Next");
-                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                DataClass.docs.add(bitmap);
+                    image = Uri.fromFile(new File(mCameraFileName));
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), image);
+                        Bitmap bitmap2 = Bitmap.createScaledBitmap(bitmap, 480, 640, true);
 
-                if (DataClass.docs.size() > 0) {
-                    my_adapter customAdapter = new my_adapter(EighthActivity.this, DataClass.docs);
-                    rv.setAdapter(customAdapter);
+                        DataClass.docs.add(bitmap2);
 
+                        if (DataClass.docs.size() > 0) {
+                            my_adapter customAdapter = new my_adapter(EighthActivity.this, DataClass.docs);
+                            rv.setAdapter(customAdapter);
+
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(this, ""+e, Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
                 }
-
-            }
-        }
-        catch (Exception e)
-        {
+                File file = new File(mCameraFileName);
+                if (!file.exists()) {
+                    file.mkdir();
+                }
+        } catch (Exception e) {
             LayoutInflater li = getLayoutInflater();
             //Getting the View object as defined in the customtoast.xml file
             View layout = li.inflate(R.layout.customtoast, (ViewGroup) findViewById(R.id.custom_toast_layout));

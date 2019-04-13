@@ -78,14 +78,10 @@ public class ThirdActivity extends AppCompatActivity {
             return;
         }
         if (al_num.isEmpty()) {
-            alter_no.setError("Please Fill this Field");
-            alter_no.requestFocus();
-            return;
+            al_num="";
         }
         if (em.isEmpty()) {
-            email.setError("Please Fill this Field");
-            email.requestFocus();
-            return;
+            em="";
         }
         if (fnum.isEmpty()) {
             fnum = "";
@@ -102,7 +98,7 @@ public class ThirdActivity extends AppCompatActivity {
 
         Log.d(ToggleButtonGroupTableLayout.TAG, DataClass.user_mobile+"\n"+DataClass.user_whatsapp+"\n"+DataClass.user_alternate+"\n"+DataClass.user_email+"\n"+DataClass.father_mobile+"\n"+DataClass.mother_mobile);
 
-        Intent i = new Intent(ThirdActivity.this, ForthActivity.class);
+        Intent i = new Intent(ThirdActivity.this, SecondActivity.class);
         startActivity(i);
     }
 }

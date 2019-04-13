@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                                 DataClass.user_dob);
 
 
-                Intent i = new Intent(MainActivity.this, SecondActivity.class);
+                Intent i = new Intent(MainActivity.this, ThirdActivity.class);
                 startActivity(i);
             }
         });

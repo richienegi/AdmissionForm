@@ -39,4 +39,40 @@ public class DataClass {
     public static String college_address="";
     public static String passout_or_student="";
     public static String source="";
+    public static String total_fees="";
+    public static String reg_fees="";
+
+
+    public static void clearAllData()
+    {
+        courses.clear();
+        docs.clear();
+        user_f_name="";
+        user_m_name="";
+        user_l_name="";
+        father_f_name="";
+        father_m_name="";
+        father_l_name="";
+        mother_f_name="";
+        mother_m_name="";
+        mother_l_name="";
+        user_gender="";
+        user_dob="";
+        user_mobile="";
+        user_whatsapp="";
+        user_alternate="";
+        user_email="";
+        father_mobile="";
+        mother_mobile="";
+        user_qualification="";
+        user_school="";
+        user_passing="";
+        company_name="";
+        designation="";
+        website="";
+        college_name="";
+        college_address="";
+        passout_or_student="";
+        source="";
+    }
 }

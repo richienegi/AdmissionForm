@@ -235,8 +235,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profileimage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
                     android:layout_margin="10dp"
                     android:src="@drawable/person" />
 
@@ -247,7 +247,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:layout_margin="10dp"
                 android:text="Course Selected" />
 
             <TableRow android:layout_margin="10dp">
@@ -256,6 +255,32 @@
                     android:id="@+id/course_list"
                     android:layout_width="match_parent"
                     android:layout_height="300sp"/>
+
+            </TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:text="Fees Detail" />
+
+            <TableRow android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Total Fees: "
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/total_fee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Text"
+                    android:textSize="25sp" />
 
             </TableRow>
 

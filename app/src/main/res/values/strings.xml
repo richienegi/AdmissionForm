@@ -3,4 +3,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terms">Terms and Conditions</string>
+    <string name="term_1">1. There is no job guarantee after completion of course.</string>
+    <string name="term_2">2. Completion certificate will be issued to me only if, I clear the exam conducted by the company at the end of training.</string>
+    <string name="term_3">3. Fee paid is not refundable in any case.</string>
+    <string name="term_4">4. All above written information about me is true.</string>
+    <string name="late_fee">If i fail to deposit fees on/before due date, I will have to pay Rs.100/- per day(as late fees charges) along with due fees and i will have to re-enroll for the course joined if i fail to deposit my fees installment eve after 10th day of due date.</string>
+
 </resources>

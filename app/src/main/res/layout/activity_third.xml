@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:layout_marginRight="80dp"
-                    android:text="* Alternate No."
+                    android:text="Alternate No."
                     android:textSize="30dp" />
 
                 <EditText
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:layout_marginRight="80dp"
-                    android:text="* Email ID."
+                    android:text="Email ID."
                     android:textSize="30dp" />
 
                 <EditText

@@ -2,6 +2,7 @@ package com.negi.ritika.admissionform;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +45,9 @@ public class NinthActivity extends AppCompatActivity {
     @BindView(R.id.submit)
     Button submit;
 
+    @BindView(R.id.home)
+    Button home;
+
     @BindView(R.id.course_list)
     ListView courses;
     @BindView(R.id.profileimage)
@@ -67,6 +71,8 @@ public class NinthActivity extends AppCompatActivity {
     TextView gender;
     @BindView(R.id.name)
     TextView name;
+    @BindView(R.id.total_fee)
+    TextView total_fee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +103,7 @@ public class NinthActivity extends AppCompatActivity {
         email.setText(DataClass.user_email);
         qualification.setText(DataClass.user_qualification);
         profile_image.setImageBitmap(DataClass.user_image);
+        total_fee.setText(DataClass.total_fees);
 
         ArrayAdapter ad = new ArrayAdapter(this, R.layout.list_layout_last, DataClass.courses);
         courses.setAdapter(ad);
@@ -108,7 +115,7 @@ public class NinthActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                submitForm();
+                showTerms();
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +124,21 @@ public class NinthActivity extends AppCompatActivity {
                 finish();
             }
         });
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataClass.clearAllData();
+                Intent intent = new Intent(NinthActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //this will always start your activity as a new task
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void showTerms() {
+
+        submitForm();
     }
 
     private void submitForm() {
@@ -180,6 +202,9 @@ public class NinthActivity extends AppCompatActivity {
                         @Override
                         public void onCompleted(Context context, UploadInfo uploadInfo, ServerResponse serverResponse) {
                             Toast.makeText(context, "Uploaded\n"+serverResponse.getBodyAsString(), Toast.LENGTH_SHORT).show();
+                            home.setVisibility(View.VISIBLE);
+                            submit.setVisibility(View.GONE);
+                            back.setVisibility(View.GONE);
                             pd.dismiss();
 //                            thanku(view);
                         }
@@ -206,7 +231,7 @@ public class NinthActivity extends AppCompatActivity {
     public String getStringImage(Bitmap bmp) {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            bmp.compress(Bitmap.CompressFormat.JPEG, 40, baos);
             byte[] imageBytes = baos.toByteArray();
             String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
             return encodedImage;

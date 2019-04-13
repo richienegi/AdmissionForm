@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.negi.ritika.admissionform">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".Initializer"
@@ -15,16 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".NinthActivity"></activity>
-        <activity android:name=".EighthActivity"></activity>
+        <activity android:name=".ThankYouActivity"></activity>
+        <activity android:name=".FeesActivity" />
+        <activity android:name=".NinthActivity" />
+        <activity android:name=".EighthActivity" />
         <activity android:name=".SeventhActivity" />
         <activity android:name=".SixthActivity" />
         <activity android:name=".FifthActivity" />
         <activity android:name=".ForthActivity" />
         <activity android:name=".ThirdActivity" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
