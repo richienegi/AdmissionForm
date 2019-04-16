@@ -56,14 +56,14 @@
             android:textColor="#fff" />
 
         <Button
-            android:id="@+id/home"
+            android:id="@+id/admin"
             android:layout_gravity="center"
             android:layout_width="120dp"
             android:visibility="gone"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/edittext_background"
-            android:text="Home"
+            android:text="Admin"
             android:textColor="#000" />
 
     </LinearLayout>
