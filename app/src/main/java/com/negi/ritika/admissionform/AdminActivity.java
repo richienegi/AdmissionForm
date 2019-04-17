@@ -12,6 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.negi.ritika.admissionform.Model_Class.DataClass;
 
 import net.gotev.uploadservice.MultipartUploadRequest;
@@ -28,11 +33,10 @@ import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class AdminActivity extends AppCompatActivity {
 
-    private String UPLOAD_URL = "http://fossfoundation.com/AdmissionForm/registration1.php";
+    private final String UPLOAD_URL = "http://fossfoundation.com/AdmissionForm/registration1.php";
     private String strDate = "";
 
     ArrayList<String> images;
@@ -52,11 +56,9 @@ public class AdminActivity extends AppCompatActivity {
     @BindView(R.id.submit)
     Button submit;
 
-    public void admission() {
+    ProgressDialog pd;
 
-        final ProgressDialog pd = new ProgressDialog(this);
-        pd.setCancelable(false);
-        pd.setMessage("Please Wait...");
+    public void admission() {
         pd.show();
 
         String uploadId = UUID.randomUUID().toString();
@@ -72,7 +74,7 @@ public class AdminActivity extends AppCompatActivity {
                     .addParameter("image", getStringImage(DataClass.user_image))
                     .addParameter("mobileno", DataClass.user_mobile)
                     .addParameter("whatsno", DataClass.user_whatsapp)
-                    .addParameter("alternatno", DataClass.user_alternate)
+                    .addParameter("address", DataClass.user_address)
                     .addParameter("email", DataClass.user_email)
                     .addParameter("fatherno", DataClass.father_mobile)
                     .addParameter("motherno", DataClass.mother_mobile)
@@ -87,6 +89,8 @@ public class AdminActivity extends AppCompatActivity {
                     .addParameter("findus", DataClass.source)
                     .addParameter("course", DataClass.courses.toString())
                     .addParameter("regisdate", strDate)
+                    .addParameter("total_fees", DataClass.total_fees)
+                    .addParameter("installments", DataClass.installments)
                     .addParameter("image1", images.get(0))
                     .addParameter("image2", images.get(1))
                     .addParameter("image3", images.get(2))
@@ -113,10 +117,8 @@ public class AdminActivity extends AppCompatActivity {
 
                         @Override
                         public void onCompleted(Context context, UploadInfo uploadInfo, ServerResponse serverResponse) {
-                            submit.setVisibility(View.GONE);
-                            home.setVisibility(View.VISIBLE);
+                            sendMessage();
                             Toast.makeText(context, "Uploaded\n\n"+serverResponse.getBodyAsString(), Toast.LENGTH_SHORT).show();
-                            pd.dismiss();
 //                            thanku(view);
                         }
 
@@ -142,6 +144,10 @@ public class AdminActivity extends AppCompatActivity {
         total_fees.setText(DataClass.total_fees);
         reg_fees.setText(DataClass.reg_fees);
 
+        pd = new ProgressDialog(this);
+        pd.setCancelable(false);
+        pd.setMessage("Please Wait...");
+
         images = new ArrayList<>();
         images.add("");
         images.add("");
@@ -161,6 +167,30 @@ public class AdminActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String fee1 = total_fees.getText().toString().trim();
+                String fee2 = reg_fees.getText().toString().trim();
+                String ins = installments.getText().toString().trim();
+
+                if(fee1.isEmpty())
+                {
+                    Toast.makeText(AdminActivity.this, "Please Enter Total Fees for the Course", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(fee2.isEmpty())
+                {
+                    Toast.makeText(AdminActivity.this, "Please Enter Registration Ammount", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(ins.isEmpty())
+                {
+                    Toast.makeText(AdminActivity.this, "Installments for the Payment of Fees", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                DataClass.total_fees = fee1;
+                DataClass.reg_fees = fee2;
+                DataClass.installments = ins;
+
                 admission();
             }
         });
@@ -193,5 +223,31 @@ public class AdminActivity extends AppCompatActivity {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public void sendMessage() {
+        String message = "";
+
+        String url = "http://203.129.225.69/API/WebSMS/Http/v1.0a/index.php?username=cbitss&password=123456&sender=CBitss&to=91" + DataClass.user_mobile + "&message=" + message + "&reqid=1&format={json|text}&route_id=7";
+
+        StringRequest sr = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                submit.setVisibility(View.GONE);
+                home.setVisibility(View.VISIBLE);
+                pd.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                submit.setVisibility(View.GONE);
+                home.setVisibility(View.VISIBLE);
+                pd.dismiss();
+                Toast.makeText(AdminActivity.this, "Message Send Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue r = Volley.newRequestQueue(this);
+        r.add(sr);
     }
 }

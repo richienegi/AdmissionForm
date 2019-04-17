@@ -56,7 +56,7 @@ public class SeventhActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(DataClass.courses.size()>0) {
-                    Intent i = new Intent(SeventhActivity.this, EighthActivity.class);
+                    Intent i = new Intent(SeventhActivity.this, FeesActivity.class);
                     startActivity(i);
                 }
                 else

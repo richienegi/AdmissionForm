@@ -25,7 +25,7 @@ public class DataClass {
     public static String user_dob="";
     public static String user_mobile="";
     public static String user_whatsapp="";
-    public static String user_alternate="";
+    public static String user_address ="";
     public static String user_email="";
     public static String father_mobile="";
     public static String mother_mobile="";
@@ -41,6 +41,7 @@ public class DataClass {
     public static String source="";
     public static String total_fees="";
     public static String reg_fees="";
+    public static String installments="";
 
 
     public static void clearAllData()
@@ -60,7 +61,7 @@ public class DataClass {
         user_dob="";
         user_mobile="";
         user_whatsapp="";
-        user_alternate="";
+        user_address ="";
         user_email="";
         father_mobile="";
         mother_mobile="";

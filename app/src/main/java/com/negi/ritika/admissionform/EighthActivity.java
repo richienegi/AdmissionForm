@@ -69,7 +69,7 @@ public class EighthActivity extends AppCompatActivity {
         mskip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EighthActivity.this, FeesActivity.class));
+                startActivity(new Intent(EighthActivity.this, NinthActivity.class));
             }
         });
 

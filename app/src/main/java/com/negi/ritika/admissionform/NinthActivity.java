@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,7 +75,30 @@ public class NinthActivity extends AppCompatActivity {
     @BindView(R.id.total_fee)
     TextView total_fee;
 
+
+    @OnClick(R.id.fees_box)
+    public void feesAlert() {
+//        Toast.makeText(this, "fees", Toast.LENGTH_SHORT).show();
+    }
+    @OnClick(R.id.course_box)
+    public void courseAlert() {
+//        Toast.makeText(this, "course", Toast.LENGTH_SHORT).show();
+    }
+    @OnClick(R.id.quali_box)
+    public void qualificationAlert() {
+//        Toast.makeText(this, "quali", Toast.LENGTH_SHORT).show();
+    }
+    @OnClick(R.id.contact_box)
+    public void contactAlert() {
+//        Toast.makeText(this, "contacts", Toast.LENGTH_SHORT).show();
+    }
+    @OnClick(R.id.personal_box)
+    public void personalAlert() {
+//        Toast.makeText(this, "personal", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ninth);
@@ -132,12 +156,9 @@ public class NinthActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String pin = pass.getText().toString().trim();
-                if(Integer.parseInt(pin) == 114877)
-                {
+                if (Integer.parseInt(pin) == 114877) {
                     startActivity(new Intent(NinthActivity.this, AdminActivity.class));
-                }
-                else
-                {
+                } else {
                     Toast.makeText(NinthActivity.this, "Enter Correct Pin", Toast.LENGTH_SHORT).show();
                 }
 
@@ -147,16 +168,17 @@ public class NinthActivity extends AppCompatActivity {
     }
 
     private void showTerms() {
-
         submitForm();
     }
 
     private void submitForm() {
+        View v = LayoutInflater.from(this).inflate(R.layout.thankyou_alert, null);
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setView(v);
+        b.setCancelable(false);
 
-        final ProgressDialog pd = new ProgressDialog(this);
-        pd.setCancelable(false);
-        pd.setMessage("Please Wait...");
-        pd.show();
+        final AlertDialog ad = b.create();
+        ad.show();
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -164,7 +186,7 @@ public class NinthActivity extends AppCompatActivity {
                 submit.setVisibility(View.GONE);
                 back.setVisibility(View.GONE);
                 home.setVisibility(View.VISIBLE);
-                pd.dismiss();
+                ad.dismiss();
             }
         }, 5000);
 

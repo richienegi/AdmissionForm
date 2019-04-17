@@ -15,14 +15,27 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:layout_column="1"
-                android:layout_margin="10dp"
-                android:text="Personal Info" />
+            <LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:layout_column="1"
+                    android:layout_margin="10dp"
+                    android:text="Personal Info" />
+
+                <ImageView
+                    android:id="@+id/personal_box"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_pencil"
+                    android:padding="4dp"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
             <TableRow android:layout_margin="10dp">
 
@@ -124,14 +137,27 @@
 
             </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:layout_column="1"
-                android:layout_margin="10dp"
-                android:text="Contact Info" />
+            <LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:layout_column="1"
+                    android:layout_margin="10dp"
+                    android:text="Contact Info" />
+
+                <ImageView
+                    android:id="@+id/contact_box"
+                    android:layout_margin="10dp"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_pencil"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
             <TableRow android:layout_margin="10dp">
 
@@ -193,14 +219,27 @@
 
             </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:layout_column="1"
-                android:layout_margin="10dp"
-                android:text="Qualification" />
+            <LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:layout_column="1"
+                    android:layout_margin="10dp"
+                    android:text="Qualification" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/quali_box"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_pencil"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
             <TableRow android:layout_margin="10dp">
 
@@ -222,7 +261,6 @@
 
             </TableRow>
 
-
         </TableLayout>
 
         <TableLayout
@@ -242,29 +280,58 @@
 
             </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:text="Course Selected" />
+            <LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:layout_column="1"
+                    android:layout_margin="10dp"
+                    android:text="Course Selected" />
+
+                <ImageView
+                    android:id="@+id/course_box"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_pencil"
+                    android:padding="4dp"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
             <TableRow android:layout_margin="10dp">
 
                 <ListView
                     android:id="@+id/course_list"
                     android:layout_width="match_parent"
-                    android:layout_height="300sp"/>
+                    android:layout_height="280sp"/>
 
             </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:layout_margin="10dp"
-                android:text="Fees Detail" />
+            <LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:layout_column="1"
+                    android:layout_margin="10dp"
+                    android:text="Fee Structure" />
+
+                <ImageView
+                    android:id="@+id/fees_box"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_pencil"
+                    android:visibility="gone"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
             <TableRow android:layout_margin="10dp">
 

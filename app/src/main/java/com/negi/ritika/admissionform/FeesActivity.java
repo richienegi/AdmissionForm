@@ -47,7 +47,7 @@ public class FeesActivity extends AppCompatActivity {
                 DataClass.total_fees = fee1;
                 DataClass.reg_fees = fee2;
 
-                startActivity(new Intent(FeesActivity.this, NinthActivity.class));
+                startActivity(new Intent(FeesActivity.this, EighthActivity.class));
             }
         });
     }
